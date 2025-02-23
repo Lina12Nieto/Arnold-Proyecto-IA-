@@ -1,2 +1,15 @@
+<mat-toolbar color="primary" class="toolbar">
+    <span>Mi Proyecto</span>
+
+    <mat-tab-group class="tabs" animationDuration="0ms" [selectedIndex]="selectedIndex" (selectedIndexChange)="cambiarRuta($event)">
+        <mat-tab label="Inicio"></mat-tab>
+        <mat-tab label="Chatbot"></mat-tab>
+        <mat-tab label="Sobre Nosotros"></mat-tab>
+    </mat-tab-group>
+</mat-toolbar>
+
+  
+
+  
 <router-outlet></router-outlet>
 

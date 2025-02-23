@@ -19,3 +19,10 @@ Copia el siguiente comando: `pip install -r requirements.txt`
    
 ### 5. Ejecuta la aplicación
 `uvicorn app.main:app --reload`
+
+## PARA EJECUTAR EL FRONTEND
+`ng serve --open`
+
+## PARA EJECUTAR EL BACKEND
+`uvicorn main:app --reload`
+

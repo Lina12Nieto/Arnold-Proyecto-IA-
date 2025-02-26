@@ -17,18 +17,14 @@ export const routes: Routes = [
       pathMatch: 'full',
 
       data: { public: true }
-    } */
+    } ,
     {
       path: 'chat',
       component: ChatBoxpComponent,
       /* data: { public: true } */
-    }
-
     },
     {
       path: 'chatbot',
       component: ChatbotComponent,
     },
-   
-
   ];

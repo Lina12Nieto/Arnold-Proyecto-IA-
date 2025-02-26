@@ -32,6 +32,6 @@ export class HomeComponent implements OnInit {
   }
 
   irAChatbot() {
-    this.router.navigate(['/chatbot']);
+    this.router.navigate(['/chat']);
   }
 }

@@ -1,4 +1,16 @@
-<div>
-    <h1>Bienvenido a la página de inicio</h1>
-    <p>Este es un párrafo de prueba.</p>
+<div class="container">
+    <div class="carousel-container">
+        <p-carousel [value]="images" [numVisible]="1" [numScroll]="1" [circular]="true" autoplayInterval="3000"> 
+            <ng-template pTemplate="item" let-image>
+                <img [src]="image.url" class="carousel-image">
+            </ng-template>
+        </p-carousel>
+        <div class="text-container">
+            <h1>Empieza tu cambio con ARNOLD</h1>
+            <p>Descubre cuántos macronutrientes necesitas y recibe recomendaciones personalizadas según tu estilo de vida y objetivos. 🔥 Entra al chat y deja que Arnold te ayude a alcanzar tu mejor versión. 💪
+            </p>
+            <button class="arnold-button" (click)="irAChatbot()">Conoce a Arnold</button>
+            
+        </div>
+    </div>
 </div>

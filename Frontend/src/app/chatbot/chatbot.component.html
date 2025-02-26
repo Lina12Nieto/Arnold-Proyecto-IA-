@@ -1,1 +1,17 @@
-<p>chatbot works!</p>
+<div class="chat-container">
+    <div class="chat-messages">
+      <div *ngFor="let msg of messages" [ngClass]="{'my-message': msg.sender === 'me', 'other-message': msg.sender !== 'me'}">
+        <span>{{ msg.text }}</span>
+      </div>
+    </div>
+  
+    <div class="chat-input">
+      <mat-form-field class="input-field">
+        <input matInput placeholder="Escribe un mensaje..." [(ngModel)]="newMessage" (keyup.enter)="sendMessage()">
+      </mat-form-field>
+      <button mat-icon-button (click)="sendMessage()">
+        <mat-icon>send</mat-icon>
+      </button>
+    </div>
+</div>
+  

@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
   selector: 'app-chat-boxp',
-  imports: [FormsModule, CommonModule],
+  imports: [FormsModule, CommonModule, MatIconModule],
   templateUrl: './chat-boxp.component.html',
   styleUrls: ['./chat-boxp.component.css']
 })
 export class ChatBoxpComponent implements OnInit {
+  @ViewChild('messagesContainer') private messagesContainer!: ElementRef;
+
   messages: { text: string, sender: string }[] = [];
   userInput: string = '';
   apiUrl = 'http://127.0.0.1:8000';
@@ -23,7 +26,7 @@ export class ChatBoxpComponent implements OnInit {
 
   ngOnInit() {
     this.messages.push({ 
-      text: '👋 ¡Bienvenido a Arnold, tu asesor de nutrición! Respóndeme las siguientes preguntas para calcular tu plan nutricional.', 
+      text: '👋 ¡Bienvenido, soy Arnold, tu asesor de nutrición! Responde las siguientes preguntas para calcular tu plan nutricional.', 
       sender: 'bot' 
     });
 
@@ -34,16 +37,26 @@ export class ChatBoxpComponent implements OnInit {
       });
   }
 
+  scrollToBottom() {
+    setTimeout(() => {
+      if (this.messagesContainer) {
+        this.messagesContainer.nativeElement.scrollTop = this.messagesContainer.nativeElement.scrollHeight;
+      }
+    }, 100);
+  }
+  
   sendMessage() {
     if (this.userInput.trim() === '') return;
   
     // Agregar mensaje del usuario
     this.messages.push({ text: this.userInput, sender: 'user' });
+    this.scrollToBottom();
 
     // Verificar si el usuario dijo "gracias"
     if (this.userInput.toLowerCase().includes("gracias")) {
       setTimeout(() => {
-        this.messages.push({ text: "💚 ¡De nada! Recuerda que estoy aquí para ayudarte. ¡Sigue adelante con tus metas! 💪😊", sender: 'bot' });
+        this.messages.push({ text: "¡De nada❤️! Recuerda que estoy aquí para ayudarte. ¡Sigue adelante con tus metas! 💪😊", sender: 'bot' });
+        this.scrollToBottom();
       }, 500);
       this.userInput = '';
       return;
@@ -63,7 +76,7 @@ export class ChatBoxpComponent implements OnInit {
     // Si el usuario está escribiendo el tipo de dieta que quiere
     if (this.awaitingDietType) {
       
-      this.messages.push({ text: 'Estamos trabajando para ofrecerte la mejor dieta, danos un momento...', sender: 'bot' });
+      this.messages.push({ text: 'Estoy trabajando para ofrecerte la mejor dieta, dame un momento...', sender: 'bot' });
       this.nombre_Dieta =  this.userInput;
       setTimeout(() => {
         this.http.get<{ respuesta: string, dietas?: any[] }>(
@@ -107,6 +120,7 @@ export class ChatBoxpComponent implements OnInit {
       (res) => {
         if (res.question) {
           this.messages.push({ text: res.question, sender: 'bot' });
+          this.scrollToBottom();
           this.questionId = res.question_id!;
         } else {
           this.messages.push({ text: 'Resultados:', sender: 'bot' });
@@ -118,13 +132,13 @@ export class ChatBoxpComponent implements OnInit {
           this.messages.push({ text: `Carbohidratos: ${res.Macronutrientes['Carbohidratos (g)']} g`, sender: 'bot' });
           
           // Preguntar si desea recomendaciones de dietas
-          this.messages.push({ text: '¿Deseas que te demos algunas sugerencias de dietas? (Sí / No)', sender: 'bot' });
+          this.messages.push({ text: '¿Deseas que te de algunas sugerencias de dietas? (Sí / No)', sender: 'bot' });
           this.awaitingDietConfirmation = true;
 
         }
       },
       (error) => {
-        this.messages.push({ text: 'Error al conectar con el servidor.', sender: 'bot' });
+        this.messages.push({ text: 'Ha ocurrido un error 😞', sender: 'bot' });
       }
     );
     

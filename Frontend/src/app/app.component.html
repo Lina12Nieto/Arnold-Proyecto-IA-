@@ -1,2 +1,17 @@
+<mat-toolbar color="warn" class="navbar">
+    <div class="logo-container">
+        <img src="./../assets/Arnold.png" alt="Logo" class="logo-img">
+        <span class="logo">ARNOLD</span>
+    </div>
+
+    <span class="spacer"></span>
+
+    <nav class="nav-links">
+        <button mat-button (click)="goTo('/home')">Inicio</button>
+        <button mat-button (click)="goTo('/chatbot')">Arnold</button>
+        <button mat-button (click)="goTo('/calculadora')">Calculadora</button>
+    </nav>
+</mat-toolbar>
+  
 <router-outlet></router-outlet>
 

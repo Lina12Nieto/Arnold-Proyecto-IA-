@@ -1,0 +1,57 @@
+h1, p, h3{
+    color: white;
+}
+
+.container {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+    justify-content: center; /* Ajusta según el espacio disponible */
+    gap: 5px; /* Espacio entre el carrusel y el texto */
+    padding: 65px;
+}
+
+.carousel-image {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+}
+
+.carousel-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Divide el espacio en dos columnas */
+    align-items: center;
+}
+
+.carousel-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 2 columnas, carrusel a la izquierda */
+}
+
+.carousel-container {
+    flex: 1; /* El carrusel toma la mitad del espacio */
+}
+
+.text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra verticalmente */
+    align-items: center; /* Centra horizontalmente */
+    text-align: center; /* Asegura que el texto quede centrado */
+    max-width: 500px; /* Ajusta el ancho del texto */
+    margin: auto; /* Centra el contenedor si es necesario */
+}
+
+.arnold-button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 20px 20px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 20px;
+    
+}
+
+.arnold-button:hover {
+    background-color: darkred;
+}

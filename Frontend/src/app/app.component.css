@@ -1,0 +1,36 @@
+.navbar {
+    background-color: #c00; /* Rojo */
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 100px;
+    height: 80px;
+}
+
+.logo {
+    font-size: 32px;
+    font-weight: bold;
+    filter: drop-shadow(3px 3px 7px black);
+}
+
+.spacer {
+    flex: 1;
+}
+
+.nav-links button {
+    color: white;
+    font-size: 16px;
+    margin:2px;
+    padding: 30px 30px;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center; /* Centra verticalmente */
+}
+
+.logo-img {
+    width: 75px; /* Ajusta el tamaño según tu logo */
+    height: auto;
+    filter: drop-shadow(5px 5px 9px black);
+} 

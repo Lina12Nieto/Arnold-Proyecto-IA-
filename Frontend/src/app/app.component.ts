@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './services/api.service';
-import { NavigationEnd, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatTabsModule} from '@angular/material/tabs';
+import {MatButtonModule} from '@angular/material/button';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,7 +11,7 @@ import { Router } from '@angular/router';
   imports: [
     RouterOutlet, 
     MatToolbarModule, 
-    MatTabsModule
+    MatButtonModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
@@ -19,17 +19,9 @@ import { Router } from '@angular/router';
 export class AppComponent implements OnInit {
   message = '';
   title = '💓';
-  rutas = ['/', '/chatbot', '/sobre-nosotros', '*']
-  selectedIndex = 0;
 
   constructor(private apiService: ApiService, private router: Router) { 
     console.log("Angular se está ejecutando correctamente");
-
-    this.router.events.subscribe(event => {
-      if (event instanceof NavigationEnd) {
-        this.selectedIndex = this.rutas.indexOf(event.url); // Ajustar índice según la ruta actual
-      }
-    });
   }
 
   ngOnInit() {
@@ -38,7 +30,8 @@ export class AppComponent implements OnInit {
     });
   }
 
-  cambiarRuta(index: number) {
-    this.router.navigate([this.rutas[index]]);
+  goTo(route: string) {
+    this.router.navigate([route]);
   }
+
 }

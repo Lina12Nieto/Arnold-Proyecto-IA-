@@ -7,28 +7,18 @@ export const routes: Routes = [
     {
       path: 'home',
       component: HomeComponent,
-      data: { public: true }
     },
     {
       path: '',
       redirectTo: 'home',
       pathMatch: 'full',
-      data: { public: true }
-    },
-    {
-      path: '*',
-      redirectTo: 'home',
-      pathMatch: 'full',
-      data: { public: true }
     },
     {
       path: 'chatbot',
       component: ChatbotComponent,
-      data: { public: true }
     },
     {
-      path: 'sobre-nosotros',
+      path: 'calculadora',
       component: ChatbotComponent,
-      data: { public: true }
     },
   ];

@@ -59,7 +59,7 @@ def get_diet(id: str):
 def chatbot(query: str):
     # Dividimos la consulta en palabras clave, para entender mejor la intención del usuario
     query_words = word_tokenize(query.lower())
-
+    print("Palabras clave:", query_words)
     # Buscamos sinónimos de las palabras clave para mejorar la búsqueda
     synonyms = {word for q in query_words for word in get_synnyms(q)} | set(query_words)
 
